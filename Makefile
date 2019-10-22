@@ -16,4 +16,7 @@ test: vars
 	@echo "git commit time  :" $(shell echo $(GCT))
 	@echo "git commit hash  :" $(shell echo $(GC))
 	@echo "revision         :" $(shell echo $(REV))
-
+	mkdir -p ./dbDir
+	touch ./dbDir/tmpfile
+	rm ./dbDir/*
+	go test .
