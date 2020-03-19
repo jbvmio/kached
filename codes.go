@@ -28,7 +28,10 @@ func (c ErrCode) Error() string {
 
 // IsErrCode returns true if the error matches the ErrCode, false otherwise.
 func IsErrCode(err error, c ErrCode) bool {
-	if err == nil {
+	switch {
+	case err == nil && c == ErrNoErr:
+		return true
+	case err == nil:
 		return false
 	}
 	return strings.HasPrefix(err.Error(), c.Error())

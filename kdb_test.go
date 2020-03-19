@@ -147,6 +147,8 @@ func TestEvict(t *testing.T) {
 		}
 		count++
 	}
+	// wait for value to pass through buffers
+	time.Sleep(10 * time.Millisecond)
 	if len(evicted) != 9 {
 		t.Errorf("expected 9 keys evicted, found %v\n", len(evicted))
 		return
